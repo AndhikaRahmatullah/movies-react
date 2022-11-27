@@ -10,6 +10,6 @@ export const movieData = async (title) => {
 			return result.Error;
 		}
 	} catch (error) {
-		return console.log(error.message);
+		return (error.message);
 	}
 };
