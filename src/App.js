@@ -2,6 +2,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import MainProvider from "./context/main";
 import Home from "./pages/Home";
 import About from "./pages/About";
+import NotFound from "./pages/NotFound";
 import Navigation from "./components/Navigation";
 
 function App() {
@@ -17,6 +18,10 @@ function App() {
 					<Route
 						path="/about"
 						element={<About />}
+					/>
+					<Route
+						path="*"
+						element={<NotFound />}
 					/>
 				</Routes>
 			</BrowserRouter>

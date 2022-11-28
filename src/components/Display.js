@@ -102,13 +102,13 @@ const Display = () => {
 	const page9 = async () => {
 		MainSearch(title, await movieDataPage9(title));
 		MainTotalFilm(Number(movieDataCurrent.totalResults));
-		MainCurrentPage(5);
+		MainCurrentPage(9);
 	};
 
 	const page10 = async () => {
 		MainSearch(title, await movieDataPage10(title));
 		MainTotalFilm(Number(movieDataCurrent.totalResults));
-		MainCurrentPage(5);
+		MainCurrentPage(10);
 	};
 
 	return (
