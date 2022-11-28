@@ -35,7 +35,7 @@ const Display = () => {
 						className="w-full h-[350px] bg-center"
 						src={x.Poster === "N/A" ? "https://images.unsplash.com/photo-1541523326621-f0ae9aa6deaf?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=435&q=80" : x.Poster}
 						alt={x.Title}
-						onClick={() => alert(`${x.Title} \n\ngg${x.imdbID}`)}
+						onClick={() => alert(`${x.Title} \n\n${x.imdbID}`)}
 					/>
 				</a>
 				<div className="h-[100px] mt-2">
