@@ -39,7 +39,7 @@ const Home = () => {
 	return (
 		<div className="mt-[100px] mb-[50px] flex flex-col justify-center items-center">
 			{/* container */}
-			<div className="w-[1200px]">
+			<div className="w-[1400px]">
 				{/* key input */}
 				<div className="mb-10 flex flex-row justify-center items-center">
 					<input
@@ -53,6 +53,7 @@ const Home = () => {
 						className="w-[500px] h-[46px] px-3 py-2 border-l-[3px] border-y-[3px] border-1 text-1 rounded-l-full outline-none shadow-xl bg-transparent transition-all duration-500 placeholder:text-1 focus:bg-1 focus:text-4 focus:placeholder:text-4"
 					/>
 					<button
+						type="submit"
 						onClick={searchMovie}
 						className="w-[70px] h-[46px] px-5 py-2 border-[3px] border-1 bg-1 rounded-r-full shadow-xl">
 						<img
