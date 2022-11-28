@@ -1,11 +1,11 @@
 import { useState, useEffect, useRef } from "react";
 import { useMain } from "../context/main";
-import { movieDataOnDisplay } from "../services/movies";
+import { movieDataPage1 } from "../services/movies";
 import Display from "../components/Display";
 
 const Home = () => {
 	const main = useMain();
-	const { movieDataCurrent, MainSearch } = main;
+	const { MainSearch, MainCurrentPage, MainTotalFilm } = main;
 	const [inputSearch, setInputSearch] = useState("");
 	const searchInputRef = useRef();
 
@@ -27,16 +27,21 @@ const Home = () => {
 	};
 
 	const searchMovie = async () => {
-		MainSearch(inputSearch, await movieDataOnDisplay(inputSearch));
+		if (!inputSearch) {
+			return null;
+		}
+		MainSearch(inputSearch, await movieDataPage1(inputSearch));
+		MainCurrentPage(1);
 		searchInputRef.current.blur();
+		setInputSearch("");
 	};
 
 	return (
-		<div className="mt-[100px] flex flex-col justify-center items-center">
+		<div className="mt-[100px] mb-[50px] flex flex-col justify-center items-center">
 			{/* container */}
 			<div className="w-[1200px]">
 				{/* key input */}
-				<div className="mb-20 flex flex-row justify-center items-center">
+				<div className="mb-10 flex flex-row justify-center items-center">
 					<input
 						type="text"
 						name="searchInput"

@@ -1,20 +1,21 @@
 import { useState, useEffect } from "react";
 import { useMain } from "../context/main";
+import { movieDataPage1, movieDataPage2, movieDataPage3, movieDataPage4, movieDataPage5, movieDataPage6, movieDataPage7, movieDataPage8, movieDataPage9, movieDataPage10 } from "../services/movies";
 import { capitalLetter } from "../utils/capitalLetter";
 
 const Display = () => {
 	const main = useMain();
-	const { title, movieDataCurrent } = main;
+	const { title, currentPage, totalFilm, movieDataCurrent, MainSearch, MainTotalFilm, MainCurrentPage } = main;
 	const [data, setData] = useState(null);
 	const [typeData, setTypeData] = useState(null);
 
 	useEffect(() => {
-		// console.log("movieDataCurrent.totalResult : ", movieDataCurrent.totalResults);
-
 		if (movieDataCurrent.Response === "True" && typeof movieDataCurrent.Search === "object") {
+			MainTotalFilm(Number(movieDataCurrent.totalResults));
 			setData((curr) => (curr = movieDataCurrent.Search));
 			setTypeData((curr) => (curr = typeof movieDataCurrent.Search));
 		} else if (movieDataCurrent.Response === "False" && typeof movieDataCurrent.Error === "string") {
+			MainTotalFilm(Number(movieDataCurrent.totalResults));
 			setData((curr) => (curr = movieDataCurrent.Error));
 			setTypeData((curr) => (curr = typeof movieDataCurrent.Error));
 		}
@@ -24,29 +25,25 @@ const Display = () => {
 	const LoopDisplay = () => {
 		const display = data.map((x) => (
 			<div
-				className="w-[320px] h-[700px] rounded-lg shadow-lg bg-red-400"
+				className="w-[320px] h-[530px] "
 				key={x.imdbID}>
 				<a
 					href="#!"
 					data-mdb-ripple="true"
 					data-mdb-ripple-color="light">
 					<img
-						className="w-full h-[430px] rounded-t-lg"
-						src={x.Poster === "N/A" ? "https://i.guim.co.uk/img/static/sys-images/Guardian/Pix/pictures/2008/12/2/1228236540882/Gallery-Michigan-auto-ind-014.jpg?width=300&quality=85&auto=format&fit=max&s=99f448ce0f6e3909a707ef63d3df4c62" : x.Poster}
-						alt={`poster ${x.Title}`}
+						className="w-full h-[430px] bg-center"
+						src={x.Poster === "N/A" ? "https://images.unsplash.com/photo-1541523326621-f0ae9aa6deaf?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=435&q=80" : x.Poster}
+						alt={x.Title}
+						onClick={() => alert(x.Title)}
 					/>
 				</a>
-				<div className="h-[270px] p-6 flex flex-col justify-between items-start">
-					<p className="w-full h-[85px] text-gray-900 text-xl font-medium overflow-hidden">{x.Title}</p>
-					<div className="w-full flex flex-col justify-center items-start gap-2">
-						<p className="w-full text-gray-700 text-base ">{x.Year}</p>
-						<p className="w-full text-gray-700 text-base ">{capitalLetter(x.Type)}</p>
-						<button
-							type="button"
-							className=" inline-block px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out">
-							Detail
-						</button>
-					</div>
+				<div className="h-[100px] mt-2">
+					<p
+						className="w-full text-xl font-medium overflow-hidden text-center text-1 cursor-pointer"
+						onClick={() => alert(x.Title)}>
+						{x.Title}
+					</p>
 				</div>
 			</div>
 		));
@@ -54,13 +51,175 @@ const Display = () => {
 		return display;
 	};
 
+	const page1 = async () => {
+		MainSearch(title, await movieDataPage1(title));
+		MainTotalFilm(Number(movieDataCurrent.totalResults));
+		MainCurrentPage(1);
+	};
+
+	const page2 = async () => {
+		MainSearch(title, await movieDataPage2(title));
+		MainTotalFilm(Number(movieDataCurrent.totalResults));
+		MainCurrentPage(2);
+	};
+
+	const page3 = async () => {
+		MainSearch(title, await movieDataPage3(title));
+		MainTotalFilm(Number(movieDataCurrent.totalResults));
+		MainCurrentPage(3);
+	};
+
+	const page4 = async () => {
+		MainSearch(title, await movieDataPage4(title));
+		MainTotalFilm(Number(movieDataCurrent.totalResults));
+		MainCurrentPage(4);
+	};
+
+	const page5 = async () => {
+		MainSearch(title, await movieDataPage5(title));
+		MainTotalFilm(Number(movieDataCurrent.totalResults));
+		MainCurrentPage(5);
+	};
+
+	const page6 = async () => {
+		MainSearch(title, await movieDataPage6(title));
+		MainTotalFilm(Number(movieDataCurrent.totalResults));
+		MainCurrentPage(6);
+	};
+
+	const page7 = async () => {
+		MainSearch(title, await movieDataPage7(title));
+		MainTotalFilm(Number(movieDataCurrent.totalResults));
+		MainCurrentPage(7);
+	};
+
+	const page8 = async () => {
+		MainSearch(title, await movieDataPage8(title));
+		MainTotalFilm(Number(movieDataCurrent.totalResults));
+		MainCurrentPage(8);
+	};
+
+	const page9 = async () => {
+		MainSearch(title, await movieDataPage9(title));
+		MainTotalFilm(Number(movieDataCurrent.totalResults));
+		MainCurrentPage(5);
+	};
+
+	const page10 = async () => {
+		MainSearch(title, await movieDataPage10(title));
+		MainTotalFilm(Number(movieDataCurrent.totalResults));
+		MainCurrentPage(5);
+	};
+
 	return (
 		<div>
-			<div className="">
-				<p className="">Hasil : {capitalLetter(title)}</p>
-				<p className="">Total : {movieDataCurrent.totalResults ? movieDataCurrent.totalResults : `-`}</p>
-			</div>
-			{typeData === null ? "" : <div className="flex flex-row justify-evenly items-center flex-wrap gap-y-10">{typeData === "object" ? <LoopDisplay /> : `${movieDataCurrent.Error}`}</div>}
+			{typeData === null ? (
+				""
+			) : (
+				<div className="mb-16 flex flex-col justify-center items-center">
+					<p className="text-xl font-lora font-bold text-1 ">Hasil Pencarian : {capitalLetter(title)}</p>
+
+					{typeData === "string" ? null : <p className="text-xl font-lora font-bold text-1 ">Jumlah Film : {totalFilm ? (totalFilm <= 100 ? totalFilm : 100) : 0}</p>}
+				</div>
+			)}
+
+			{typeData === null ? "" : <div className="flex flex-row justify-evenly items-center flex-wrap gap-y-16">{typeData === "object" ? <LoopDisplay /> : <p className="text-xl font-medium text-1">Sorry, {movieDataCurrent.Error}</p>}</div>}
+
+			{typeData === null ? (
+				""
+			) : (
+				<div className="mt-10 flex flex-row justify-center items-center gap-3 text-lg font-medium">
+					{totalFilm > 0 ? (
+						<a
+							href="#top"
+							className={currentPage === 1 ? "bg-red-500" : ""}
+							onClick={page1}>
+							1
+						</a>
+					) : null}
+
+					{totalFilm > 10 ? (
+						<a
+							href="#top"
+							className={currentPage === 2 ? "bg-red-500" : ""}
+							onClick={page2}>
+							2
+						</a>
+					) : null}
+
+					{totalFilm > 20 ? (
+						<a
+							href="#top"
+							className={currentPage === 3 ? "bg-red-500" : ""}
+							onClick={page3}>
+							3
+						</a>
+					) : null}
+
+					{totalFilm > 30 ? (
+						<a
+							href="#top"
+							className={currentPage === 4 ? "bg-red-500" : ""}
+							onClick={page4}>
+							4
+						</a>
+					) : null}
+
+					{totalFilm > 40 ? (
+						<a
+							href="#top"
+							className={currentPage === 5 ? "bg-red-500" : ""}
+							onClick={page5}>
+							5
+						</a>
+					) : null}
+
+					{totalFilm > 50 ? (
+						<a
+							href="#top"
+							className={currentPage === 6 ? "bg-red-500" : ""}
+							onClick={page6}>
+							6
+						</a>
+					) : null}
+
+					{totalFilm > 60 ? (
+						<a
+							href="#top"
+							className={currentPage === 7 ? "bg-red-500" : ""}
+							onClick={page7}>
+							7
+						</a>
+					) : null}
+
+					{totalFilm > 70 ? (
+						<a
+							href="#top"
+							className={currentPage === 8 ? "bg-red-500" : ""}
+							onClick={page8}>
+							8
+						</a>
+					) : null}
+
+					{totalFilm > 80 ? (
+						<a
+							href="#top"
+							className={currentPage === 9 ? "bg-red-500" : ""}
+							onClick={page9}>
+							9
+						</a>
+					) : null}
+
+					{totalFilm > 90 ? (
+						<a
+							href="#top"
+							className={currentPage === 10 ? "bg-red-500" : ""}
+							onClick={page10}>
+							10
+						</a>
+					) : null}
+				</div>
+			)}
 		</div>
 	);
 };
