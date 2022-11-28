@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { useMain } from "../context/main";
 
-const Favorite = () => {
+const About = () => {
 	const main = useMain();
 	const { MainSearch } = main;
 
@@ -16,4 +16,4 @@ const Favorite = () => {
 	return <div className="mt-[100px]">{main.title}</div>;
 };
 
-export default Favorite;
+export default About;

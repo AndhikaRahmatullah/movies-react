@@ -20,8 +20,8 @@ const Navigation = () => {
 				<li className={splitLocation[1] === "" ? "text-4 transition-all duration-500" : ""}>
 					<Link to="/">Beranda</Link>
 				</li>{" "}
-				<li className={splitLocation[1] === "favorite" ? "text-4 transition-all duration-500" : ""}>
-					<Link to="/favorite">Suka</Link>
+				<li className={splitLocation[1] === "about" ? "text-4 transition-all duration-500" : ""}>
+					<Link to="/about">Tentang</Link>
 				</li>{" "}
 			</nav>
 		</div>

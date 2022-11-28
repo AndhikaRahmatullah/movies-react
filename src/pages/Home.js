@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from "react";
 import { useMain } from "../context/main";
-import { movieData } from "../services/movies";
+import { movieDataOnDisplay } from "../services/movies";
 import Display from "../components/Display";
 
 const Home = () => {
@@ -27,10 +27,8 @@ const Home = () => {
 	};
 
 	const searchMovie = async () => {
-		if (typeof movieDataCurrent === "object") {
-			return MainSearch(inputSearch, await movieData(inputSearch));
-		}
-		MainSearch(inputSearch, await movieData(inputSearch));
+		MainSearch(inputSearch, await movieDataOnDisplay(inputSearch));
+		searchInputRef.current.blur();
 	};
 
 	return (

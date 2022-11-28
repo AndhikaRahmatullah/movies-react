@@ -1,7 +1,7 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import MainProvider from "./context/main";
 import Home from "./pages/Home";
-import Favorite from "./pages/Favorite";
+import About from "./pages/About";
 import Navigation from "./components/Navigation";
 
 function App() {
@@ -15,8 +15,8 @@ function App() {
 						element={<Home />}
 					/>
 					<Route
-						path="/favorite"
-						element={<Favorite />}
+						path="/about"
+						element={<About />}
 					/>
 				</Routes>
 			</BrowserRouter>
