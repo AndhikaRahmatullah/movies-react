@@ -40,7 +40,7 @@ const Display = () => {
 				</a>
 				<div className="h-[50px] md:h-[80px] lg:h-[100px] mt-2">
 					<p
-						className="w-full text-base md:text-lg lg:text-xl font-medium overflow-hidden text-center text-1 cursor-pointer"
+						className="w-full text-base md:text-lg lg:text-xl font-semibold overflow-hidden text-center text-1 cursor-pointer font-lora"
 						onClick={() => alert(x.Title)}>
 						{x.Title}
 					</p>
