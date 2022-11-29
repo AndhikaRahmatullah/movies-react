@@ -2,10 +2,11 @@ import { useState, useEffect, useRef } from "react";
 import { useMain } from "../context/main";
 import { movieDataPage1 } from "../services/movies";
 import Display from "../components/Display";
+import Carousel from "../components/Carousel";
 
 const Home = () => {
 	const main = useMain();
-	const { MainSearch, MainCurrentPage, MainTotalFilm } = main;
+	const { MainSearch, MainCurrentPage } = main;
 	const [inputSearch, setInputSearch] = useState("");
 	const searchInputRef = useRef();
 
@@ -39,7 +40,10 @@ const Home = () => {
 	return (
 		<div className="mt-[100px] mb-[50px] flex flex-col justify-center items-center">
 			{/* container */}
-			<div className="w-[1400px]">
+			<div
+				className="w-[350px] md:w-[750px] lg:w-[950px] xl:w-[1250px] min-[1400px]:w-[1400px] transition-all duration-700"
+				id="containerHome">
+				<Carousel />
 				{/* key input */}
 				<div className="mb-10 flex flex-row justify-center items-center">
 					<input
@@ -50,18 +54,18 @@ const Home = () => {
 						onChange={onInputSearch}
 						onKeyPress={searchMovieAlternative}
 						placeholder="Masukan Judul Film"
-						className="w-[500px] h-[46px] px-3 py-2 border-l-[3px] border-y-[3px] border-1 text-1 rounded-l-full outline-none shadow-xl bg-transparent transition-all duration-500 placeholder:text-1 focus:bg-1 focus:text-4 focus:placeholder:text-4"
+						className="w-full md:w-[500px] h-[40px] md:h-[46px] text-sm md:text-base lg:text-lg px-3 py-2 border-l-[3px] border-y-[3px] border-1 text-1 rounded-l-full outline-none shadow-xl bg-transparent transition-all duration-500 placeholder:text-1 focus:bg-1 focus:text-4 focus:placeholder:text-4"
 					/>
-					<button
-						type="submit"
+					<a
+						href="#display"
 						onClick={searchMovie}
-						className="w-[70px] h-[46px] px-5 py-2 border-[3px] border-1 bg-1 rounded-r-full shadow-xl">
+						className="w-[70px] h-[40px] md:h-[46px] px-5 py-2 border-[3px] border-1 bg-1 rounded-r-full shadow-xl">
 						<img
 							src="https://img.icons8.com/external-kiranshastry-gradient-kiranshastry/512/external-search-logistic-delivery-kiranshastry-gradient-kiranshastry.png"
 							alt="search"
-							className="h-full"
+							className="w-[70px] md:w-full h-full"
 						/>
-					</button>
+					</a>
 				</div>
 				<Display />
 			</div>

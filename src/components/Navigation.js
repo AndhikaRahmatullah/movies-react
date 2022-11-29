@@ -7,7 +7,7 @@ const Navigation = () => {
 	const splitLocation = pathname.split("/");
 
 	return (
-		<div className={splitLocation[1] !== "about" && splitLocation[1] !== "" ? "hidden" : "w-full h-[70px] fixed top-0 px-20 flex flex-row justify-between items-center bg-1 shadow-xl z-50 "}>
+		<div className={splitLocation[1] !== "about" && splitLocation[1] !== "" ? "hidden" : "hidden w-full h-[70px] fixed top-0 px-20 md:flex flex-row justify-between items-center bg-1 shadow-xl z-50 "}>
 			<div className="h-[50px]">
 				<Link
 					to="/"
@@ -19,7 +19,6 @@ const Navigation = () => {
 					/>
 					XXWAN MOPIS
 				</Link>
-				{/* <p className="h-full pr-2 flex items-center text-2xl font-bold tracking-wider text-4">XXWAN MOPIS</p> */}
 			</div>
 			<nav className="flex flex-row gap-3 text-lg list-none text-gray-700">
 				<li className={splitLocation[1] === "" ? "text-4 transition-all duration-500" : ""}>

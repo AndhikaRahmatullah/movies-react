@@ -13,7 +13,15 @@ const About = () => {
 		};
 	}, []);
 
-	return <div className="mt-[100px]">{main.title}</div>;
+	return (
+		<div className="mt-[100px]">
+			<div
+				id="containerAbout"
+				className="transition-all duration-700">
+				{main.title}
+			</div>
+		</div>
+	);
 };
 
 export default About;

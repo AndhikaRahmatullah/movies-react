@@ -4,12 +4,14 @@ import Home from "./pages/Home";
 import About from "./pages/About";
 import NotFound from "./pages/NotFound";
 import Navigation from "./components/Navigation";
+import NavigationPhone from "./components/NavigationPhone";
 
 function App() {
 	return (
 		<MainProvider>
 			<BrowserRouter>
 				<Navigation />
+				<NavigationPhone />
 				<Routes>
 					<Route
 						path="/"

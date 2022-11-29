@@ -112,7 +112,7 @@ const Display = () => {
 	};
 
 	return (
-		<div>
+		<div id="display">
 			{/* header */}
 			{typeData === null ? (
 				""
@@ -125,16 +125,16 @@ const Display = () => {
 			)}
 
 			{/* body  */}
-			{typeData === null ? "" : <div className="flex flex-row justify-around items-center flex-wrap gap-5">{typeData === "object" ? <LoopDisplay /> : <p className="text-xl font-medium text-1">Sorry, {movieDataCurrent.Error}</p>}</div>}
+			{typeData === null ? "" : <div className="flex flex-row justify-around items-center flex-wrap gap-5">{typeData === "object" ? <LoopDisplay /> : <p className="text-xl font-medium text-1">{movieDataCurrent.Error}</p>}</div>}
 
 			{/* footer */}
 			{typeData === null ? (
 				""
 			) : (
-				<div className="mt-10 flex flex-row justify-center items-center gap-3 text-lg font-medium">
+				<div className="mt-10 flex flex-row justify-center items-center flex-wrap gap-3 text-lg font-medium">
 					{totalFilm > 0 ? (
 						<a
-							href="#top"
+							href="#display"
 							className={currentPage === 1 ? "p-2 bg-1 rounded-[50%] text-4 transition-all duration-300" : "p-2 text-1"}
 							onClick={page1}>
 							1
@@ -143,7 +143,7 @@ const Display = () => {
 
 					{totalFilm > 10 ? (
 						<a
-							href="#top"
+							href="#display"
 							className={currentPage === 2 ? "p-2 bg-1 rounded-[50%] text-4 transition-all duration-300" : "p-2 text-1"}
 							onClick={page2}>
 							2
@@ -152,7 +152,7 @@ const Display = () => {
 
 					{totalFilm > 20 ? (
 						<a
-							href="#top"
+							href="#display"
 							className={currentPage === 3 ? "p-2 bg-1 rounded-[50%] text-4 transition-all duration-300" : "p-2 text-1"}
 							onClick={page3}>
 							3
@@ -161,7 +161,7 @@ const Display = () => {
 
 					{totalFilm > 30 ? (
 						<a
-							href="#top"
+							href="#display"
 							className={currentPage === 4 ? "p-2 bg-1 rounded-[50%] text-4 transition-all duration-300" : "p-2 text-1"}
 							onClick={page4}>
 							4
@@ -170,7 +170,7 @@ const Display = () => {
 
 					{totalFilm > 40 ? (
 						<a
-							href="#top"
+							href="#display"
 							className={currentPage === 5 ? "p-2 bg-1 rounded-[50%] text-4 transition-all duration-300" : "p-2 text-1"}
 							onClick={page5}>
 							5
@@ -179,7 +179,7 @@ const Display = () => {
 
 					{totalFilm > 50 ? (
 						<a
-							href="#top"
+							href="#display"
 							className={currentPage === 6 ? "p-2 bg-1 rounded-[50%] text-4 transition-all duration-300" : "p-2 text-1"}
 							onClick={page6}>
 							6
@@ -188,7 +188,7 @@ const Display = () => {
 
 					{totalFilm > 60 ? (
 						<a
-							href="#top"
+							href="#display"
 							className={currentPage === 7 ? "p-2 bg-1 rounded-[50%] text-4 transition-all duration-300" : "p-2 text-1"}
 							onClick={page7}>
 							7
@@ -197,7 +197,7 @@ const Display = () => {
 
 					{totalFilm > 70 ? (
 						<a
-							href="#top"
+							href="#display"
 							className={currentPage === 8 ? "p-2 bg-1 rounded-[50%] text-4 transition-all duration-300" : "p-2 text-1"}
 							onClick={page8}>
 							8
@@ -206,7 +206,7 @@ const Display = () => {
 
 					{totalFilm > 80 ? (
 						<a
-							href="#top"
+							href="#display"
 							className={currentPage === 9 ? "p-2 bg-1 rounded-[50%] text-4 transition-all duration-300" : "p-2 text-1"}
 							onClick={page9}>
 							9
@@ -215,7 +215,7 @@ const Display = () => {
 
 					{totalFilm > 90 ? (
 						<a
-							href="#top"
+							href="#display"
 							className={currentPage === 10 ? "p-2 bg-1 rounded-[50%] text-4 transition-all duration-300" : "p-2 text-1"}
 							onClick={page10}>
 							10
