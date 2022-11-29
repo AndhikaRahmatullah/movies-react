@@ -51,7 +51,7 @@ const NavigationPhone = () => {
 				</p>
 			</div>
 			{showNavStatus ? (
-				<nav className="flex flex-row gap-3 text-lg list-none text-gray-700">
+				<nav className="flex flex-row gap-3 text-base list-none text-gray-700">
 					<li className={splitLocation[1] === "" ? "text-4 transition-all duration-500" : ""}>
 						<Link
 							to="/"

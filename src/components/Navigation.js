@@ -11,7 +11,7 @@ const Navigation = () => {
 			<div className="h-[50px]">
 				<Link
 					to="/"
-					className="h-full pr-2 flex flex-row justify-center items-center gap-4 text-2xl font-bold tracking-wider text-4">
+					className="h-full pr-2 flex flex-row justify-center items-center gap-4 text-lg lg:text-2xl font-bold tracking-wider text-4">
 					<img
 						src="https://img.icons8.com/plasticine/512/film-reel.png"
 						alt="logo xxwan mopis"
@@ -20,11 +20,11 @@ const Navigation = () => {
 					XXWAN MOPIS
 				</Link>
 			</div>
-			<nav className="flex flex-row gap-3 text-lg list-none text-gray-700">
-				<li className={splitLocation[1] === "" ? "text-4 transition-all duration-500" : ""}>
+			<nav className="flex flex-row gap-3 list-none text-gray-700 text-base lg:text-lg">
+				<li className={splitLocation[1] === "" ? " text-4 transition-all duration-500" : ""}>
 					<Link to="/">Beranda</Link>
 				</li>{" "}
-				<li className={splitLocation[1] === "about" ? "text-4 transition-all duration-500" : ""}>
+				<li className={splitLocation[1] === "about" ? " text-4 transition-all duration-500" : ""}>
 					<Link to="/about">Tentang</Link>
 				</li>{" "}
 			</nav>
