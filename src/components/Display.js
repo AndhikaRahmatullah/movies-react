@@ -25,22 +25,22 @@ const Display = () => {
 	const LoopDisplay = () => {
 		const display = data.map((x) => (
 			<div
-				className="w-[280px] h-[450px] "
+				className="w-[280px] h-[350px] md:h-[400px] lg:h-[450px] "
 				key={x.imdbID}>
 				<a
 					href="#!"
 					data-mdb-ripple="true"
 					data-mdb-ripple-color="light">
 					<img
-						className="w-full h-[350px] bg-center"
+						className="w-full h-[300px] md:h-[320px] lg:h-[350px] bg-center"
 						src={x.Poster === "N/A" ? "https://images.unsplash.com/photo-1541523326621-f0ae9aa6deaf?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=435&q=80" : x.Poster}
 						alt={x.Title}
 						onClick={() => alert(`${x.Title} \n\n${x.imdbID}`)}
 					/>
 				</a>
-				<div className="h-[100px] mt-2">
+				<div className="h-[50px] md:h-[80px] lg:h-[100px] mt-2">
 					<p
-						className="w-full text-xl font-medium overflow-hidden text-center text-1 cursor-pointer"
+						className="w-full text-base md:text-lg lg:text-xl font-medium overflow-hidden text-center text-1 cursor-pointer"
 						onClick={() => alert(x.Title)}>
 						{x.Title}
 					</p>
@@ -125,13 +125,13 @@ const Display = () => {
 			)}
 
 			{/* body  */}
-			{typeData === null ? "" : <div className="flex flex-row justify-around items-center flex-wrap gap-5">{typeData === "object" ? <LoopDisplay /> : <p className="text-xl font-medium text-1">{movieDataCurrent.Error}</p>}</div>}
+			{typeData === null ? "" : <div className="flex flex-row justify-around items-center flex-wrap gap-10 md:gap-5">{typeData === "object" ? <LoopDisplay /> : <p className="text-xl font-medium text-1">{movieDataCurrent.Error}</p>}</div>}
 
 			{/* footer */}
 			{typeData === null ? (
 				""
 			) : (
-				<div className="mt-10 flex flex-row justify-center items-center flex-wrap gap-3 text-lg font-medium">
+				<div className="mt-10 flex flex-row justify-center items-center flex-wrap gap-3 text-sm md:text-base lg:text-lg font-medium">
 					{totalFilm > 0 ? (
 						<a
 							href="#display"
