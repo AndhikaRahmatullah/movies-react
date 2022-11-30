@@ -1,6 +1,8 @@
 import { useState, useEffect, useRef } from "react";
 import { useMain } from "../context/main";
 import { movieDataPage1 } from "../services/movies";
+import { motion } from "framer-motion";
+import { inputHome } from "../utils/variantsMotion";
 import Display from "../components/Display";
 import Carousel from "../components/Carousel";
 
@@ -13,9 +15,7 @@ const Home = () => {
 	useEffect(() => {
 		document.title = "XXWan Mopis";
 
-		return () => {
-			document.title = "XXWan Mopis";
-		};
+		return () => {};
 	}, []);
 
 	const onInputSearch = (e) => {
@@ -41,11 +41,15 @@ const Home = () => {
 		<div className="mt-[100px] mb-[50px] flex flex-col justify-center items-center">
 			{/* container */}
 			<div
-				className="w-[350px] md:w-[750px] lg:w-[950px] xl:w-[1250px] min-[1400px]:w-[1400px] transition-all duration-700"
+				className="min-h-screen w-[350px] md:w-[750px] lg:w-[950px] xl:w-[1250px] min-[1400px]:w-[1400px] transition-all duration-700"
 				id="containerHome">
 				<Carousel />
 				{/* key input */}
-				<div className="mb-10 flex flex-row justify-center items-center">
+				<motion.div
+					variants={inputHome}
+					initial="hidden"
+					animate="visible"
+					className="mb-10 flex flex-row justify-center items-center">
 					<input
 						type="text"
 						name="searchInput"
@@ -66,7 +70,7 @@ const Home = () => {
 							className="w-[70px] md:w-full h-full"
 						/>
 					</a>
-				</div>
+				</motion.div>
 				<Display />
 			</div>
 		</div>

@@ -1,8 +1,14 @@
 import React from "react";
+import { motion } from "framer-motion";
+import { imageCarousel } from "../utils/variantsMotion";
 
 const Carousel = () => {
 	return (
-		<div className="mb-10 flex justify-center items-center">
+		<motion.div
+			variants={imageCarousel}
+			initial="hidden"
+			animate="visible"
+			className="mb-10 flex justify-center items-center">
 			<div
 				id="carouselExampleControls"
 				className="carousel slide relative w-full"
@@ -58,7 +64,7 @@ const Carousel = () => {
 					<span className="visually-hidden">Next</span>
 				</button>
 			</div>
-		</div>
+		</motion.div>
 	);
 };
 

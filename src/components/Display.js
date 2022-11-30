@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { useMain } from "../context/main";
 import { movieDataPage1, movieDataPage2, movieDataPage3, movieDataPage4, movieDataPage5, movieDataPage6, movieDataPage7, movieDataPage8, movieDataPage9, movieDataPage10 } from "../services/movies";
 import { capitalLetter } from "../utils/capitalLetter";
+import { motion } from "framer-motion";
 
 const Display = () => {
 	const main = useMain();
@@ -25,8 +26,10 @@ const Display = () => {
 	const LoopDisplay = () => {
 		const display = data.map((x) => (
 			<div
-				className="w-[280px] h-[350px] md:h-[400px] lg:h-[450px] "
-				key={x.imdbID}>
+				className="w-[280px] h-[350px] md:h-[400px] lg:h-[450px] transition-all duration-300 hover:grayscale hover:scale-95"
+				key={x.imdbID}
+				id={x.imdbID}
+				onClick={() => console.log(x.Title)}>
 				<a
 					href="#!"
 					data-mdb-ripple="true"
@@ -35,15 +38,10 @@ const Display = () => {
 						className="w-full h-[300px] md:h-[320px] lg:h-[350px] bg-center"
 						src={x.Poster === "N/A" ? "https://images.unsplash.com/photo-1541523326621-f0ae9aa6deaf?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=435&q=80" : x.Poster}
 						alt={x.Title}
-						onClick={() => alert(`${x.Title} \n\n${x.imdbID}`)}
 					/>
 				</a>
 				<div className="h-[50px] md:h-[80px] lg:h-[100px] mt-2">
-					<p
-						className="w-full text-base md:text-lg lg:text-xl font-semibold overflow-hidden text-center text-1 cursor-pointer font-lora"
-						onClick={() => alert(x.Title)}>
-						{x.Title}
-					</p>
+					<p className="w-full text-base md:text-lg lg:text-xl font-semibold overflow-hidden text-center text-1 cursor-pointer font-lora">{x.Title}</p>
 				</div>
 			</div>
 		));
@@ -117,15 +115,29 @@ const Display = () => {
 			{typeData === null ? (
 				""
 			) : (
-				<div className="mb-16 flex flex-col justify-center items-center">
+				<motion.div
+					initial={{ opacity: 0 }}
+					animate={{ opacity: 1 }}
+					transition={{ delay: 2, duration: 1 }}
+					className="mb-16 flex flex-col justify-center items-center">
 					<p className="text-xl font-lora font-bold text-1 ">Hasil Pencarian : {capitalLetter(title)}</p>
 
 					{typeData === "string" ? null : <p className="text-xl font-lora font-bold text-1 ">Jumlah Film : {totalFilm ? (totalFilm <= 100 ? totalFilm : 100) : 0}</p>}
-				</div>
+				</motion.div>
 			)}
 
 			{/* body  */}
-			{typeData === null ? "" : <div className="flex flex-row justify-around items-center flex-wrap gap-10 md:gap-5">{typeData === "object" ? <LoopDisplay /> : <p className="text-xl font-medium text-1">{movieDataCurrent.Error}</p>}</div>}
+			{typeData === null ? (
+				""
+			) : (
+				<motion.div
+					initial={{ opacity: 0 }}
+					animate={{ opacity: 1 }}
+					transition={{ delay: 2.5, duration: 1 }}
+					className="flex flex-row justify-around items-center flex-wrap gap-10 md:gap-5">
+					{typeData === "object" ? <LoopDisplay /> : <p className="text-xl font-medium text-1">{movieDataCurrent.Error}</p>}
+				</motion.div>
+			)}
 
 			{/* footer */}
 			{typeData === null ? (
