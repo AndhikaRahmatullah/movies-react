@@ -1,6 +1,6 @@
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 import { useMain } from "../context/main";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 import { instagram, linkedin, github, paragraphAbout, titleAbout, socialMedia } from "../utils/variantsMotion";
 
 const About = () => {

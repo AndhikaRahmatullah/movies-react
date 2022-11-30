@@ -132,36 +132,3 @@ export const inputHome = {
 		},
 	},
 };
-
-// export const containerVariants = {
-// 	hidden: {
-// 		opacity: 0,
-// 		x: "100vw",
-// 	},
-// 	visible: {
-// 		opacity: 1,
-// 		x: 0,
-// 		transition: {
-// 			type: "spring",
-// 			delay: 0.5,
-// 			when: "beforeChildren",
-// 			staggerChildren: 0.5,
-// 		},
-// 	},
-// };
-
-// export const childVariants = {
-// 	hidden: {
-// 		opacity: 0,
-// 	},
-// 	visible: {
-// 		opacity: 1,
-// 	},
-// 	exit: {
-// 		opacity: 0,
-// 		transition: {
-// 			duration: 1.2,
-// 			ease: "easeInOut",
-// 		},
-// 	},
-// };
