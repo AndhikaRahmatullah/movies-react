@@ -2,6 +2,8 @@ import { createContext, useContext, useReducer } from "react";
 
 const InitialMainState = {
 	title: "",
+	idFilm: "",
+	selectFilm: "",
 	currentPage: 1,
 	totalFilm: null,
 	movieDataCurrent: [],
@@ -9,6 +11,8 @@ const InitialMainState = {
 
 const MainActions = {
 	SET_TITLE: "SET_TITLE",
+	SET_ID_FILM: "SET_ID_FILM",
+	SET_SELECT_FILM: "SET_SELECT_FILM",
 	SET_CURRENT_PAGE: "SET_CURRENT_PAGE",
 	SET_TOTAL_FILM: "SET_TOTAL_FILM",
 	SET_MOVIE_DATA_CURRENT: "SET_MOVIE_DATA_CURRENT",
@@ -18,6 +22,10 @@ const MainReducer = (state, action) => {
 	switch (action.type) {
 		case MainActions.SET_TITLE:
 			return { ...state, title: action.payload.title };
+		case MainActions.SET_ID_FILM:
+			return { ...state, idFilm: action.payload.idFilm };
+		case MainActions.SET_SELECT_FILM:
+			return { ...state, selectFilm: action.payload.selectFilm };
 		case MainActions.SET_CURRENT_PAGE:
 			return { ...state, currentPage: action.payload.currentPage };
 		case MainActions.SET_TOTAL_FILM:
@@ -47,11 +55,17 @@ const MainProvider = ({ children }) => {
 	const MainCurrentPage = (currentPage) => {
 		dispatch({ type: MainActions.SET_CURRENT_PAGE, payload: { currentPage: currentPage } });
 	};
+
 	const MainTotalFilm = (totalFilm) => {
 		dispatch({ type: MainActions.SET_TOTAL_FILM, payload: { totalFilm: totalFilm } });
 	};
 
-	return <MainContext.Provider value={{ ...state, MainSearch, MainCurrentPage, MainTotalFilm }}>{children}</MainContext.Provider>;
+	const MainIdFilm = (idFilm, selectFilm) => {
+		dispatch({ type: MainActions.SET_ID_FILM, payload: { idFilm: idFilm } });
+		dispatch({ type: MainActions.SET_SELECT_FILM, payload: { selectFilm: selectFilm } });
+	};
+
+	return <MainContext.Provider value={{ ...state, MainSearch, MainCurrentPage, MainTotalFilm, MainIdFilm }}>{children}</MainContext.Provider>;
 };
 
 export default MainProvider;

@@ -89,3 +89,12 @@ export const movieDataPage10 = async (title) => {
 		return error.message;
 	}
 };
+
+export const detailFilm = async (id) => {
+	try {
+		const response = await axios.get(`https://www.omdbapi.com/?apikey=da37d5ef&i=${id}`);
+		return response.data;
+	} catch (error) {
+		return error.message;
+	}
+};
